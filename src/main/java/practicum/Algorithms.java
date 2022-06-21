@@ -1,160 +1,327 @@
 package practicum;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Algorithms {
 
     /**
      *
-     * Р’ Р·Р°РґР°С‡Р°С…, РІ РєРѕС‚РѕСЂС‹С… Р·Р°СЂР°РЅРµРµ РЅРµ РѕРіРѕРІРѕСЂРµРЅ СЃРѕСЃС‚Р°РІ СЃРёРјРІРѕР»РѕРІ РІ СЃС‚СЂРѕРєР°С…,
-     * СЃС‚СЂРѕРєРё РјРѕРіСѓС‚ СЃРѕРґРµСЂР¶Р°С‚СЊ СЂСѓСЃСЃРєРёРµ Рё Р°РЅРіР»РёР№СЃРєРёРµ Р±СѓРєРІС‹,
-     * Р° С‚Р°РєР¶Рµ РїСЂРѕР±РµР»С‹, Р·РЅР°РєРё РїСЂРµРїРёРЅР°РЅРёСЏ, РєР°РІС‹С‡РєРё Рё СЃРєРѕР±РєРё.
+     * В задачах, в которых заранее не оговорен состав символов в строках,
+     * строки могут содержать русские и английские буквы,
+     * а также пробелы, знаки препинания, кавычки и скобки.
      *
-     * РќРµ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РїСЂРё СЂРµС€РµРЅРёРё СЂРµРіСѓР»СЏСЂРЅС‹Рµ РІС‹СЂР°Р¶РµРЅРёСЏ, РјРµС‚РѕРґС‹ СЃС‚Р°РЅРґР°СЂС‚РЅС‹С… Р±РёР±Р»РёРѕС‚РµРє
-     * java.util.Collections, java.util.Arrays, java.lang.Math, Р° С‚Р°РєР¶Рµ РјРµС‚РѕРґС‹
-     * replace Рё replaceAll, reverce, equals, indexOf, toLowerCase, toUpperCase
-     * split, substring РёР· java.lang.String.
-     * РњРѕР¶РµС‚Рµ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ С†РёРєР»С‹, СѓСЃР»РѕРІРЅС‹Рµ РѕРїРµСЂР°С‚РѕСЂС‹,
-     * РїСЂРѕСЃС‚С‹Рµ С‚РёРїС‹ РґР°РЅРЅС‹С… Рё РёС… РѕР±РµСЂС‚РєРё.
+     * Не использовать при решении регулярные выражения, методы стандартных библиотек
+     * java.util.Collections, java.util.Arrays, java.lang.Math, а также методы
+     * replace и replaceAll, reverce, equals, indexOf, toLowerCase, toUpperCase
+     * split, substring из java.lang.String.
+     * Можете использовать циклы, условные операторы,
+     * простые типы данных и их обертки.
      *
-     * РљР°Рє РёР·РјРµРЅРёС‚СЃСЏ СЃР»РѕР¶РЅРѕСЃС‚СЊ РІР°С€РёС… СЂРµС€РµРЅРёР№, РµСЃР»Рё СѓР±СЂР°С‚СЊ
-     * РѕРіСЂР°РЅРёС‡РµРЅРёСЏ РїРѕ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЋ С„СѓРЅРєС†РёР№ Java API?
+     * Как изменится сложность ваших решений, если убрать
+     * ограничения по использованию функций Java API?
      */
 
     /**
-     * Р’С‹С‡РёСЃР»РёС‚Рµ РјР°РєСЃРёРјР°Р»СЊРЅРѕРµ, РјРёРЅРёРјР°Р»СЊРЅРѕРµ Рё СЃСЂРµРґРЅРµРµ С‡РёСЃР»Рѕ РґР»СЏ СЃРїРёСЃРєР° С‡РёСЃРµР»
-     * Р’РµСЂРЅРёС‚Рµ РёС… СЃСѓРјРјСѓ
-     * РЎРїРёСЃРѕРє РіР°СЂР°РЅС‚РёСЂРѕРІР°РЅРЅРѕ СЃРѕРґРµР¶РёС‚ СЌР»РµРјРµРЅС‚С‹
+     * Вычислите максимальное, минимальное и среднее число для списка чисел
+     * Верните их сумму
+     * Список гарантированно содежит элементы
      */
     public static double maxMinAvr(List<Integer> numbers) {
-        return -1;
+        //O(N)
+        int min = numbers.get(0);
+        int max = numbers.get(0);
+        int sum = numbers.get(0);
+        for (int i = 1; i < numbers.size(); i++) {
+            int current = numbers.get(i);
+            if (current < min) {
+                min = current;
+            }
+            if (current > max) {
+                max = current;
+            }
+            sum += current;
+        }
+        return (double) sum / numbers.size() + max + min;
     }
 
 
     /**
-     * РќР°Р№РґРёС‚Рµ РІС‚РѕСЂРѕРµ РјР°РєСЃРёРјР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РІ РјР°СЃСЃРёРІРµ,
-     * РµСЃР»Рё С‚Р°РєРѕРіРѕ РЅРµС‚, С‚Рѕ РІРµСЂРЅСѓС‚СЊ РїРµСЂРІРѕРµ
-     * РњР°СЃСЃРёРІ РіР°СЂР°РЅС‚РёСЂРѕРІР°РЅРѕ СЃРѕРґРµСЂР¶РёС‚ СЌР»РµРјРµРЅС‚С‹
+     * Найдите второе максимальное значение в массиве,
+     * если такого нет, то вернуть первое
+     * Массив гарантировано содержит элементы
      */
     public static Integer max2(List<Integer> list) {
-
-        return -1;
+        //O(N)
+        int max1 = list.get(0);
+        int max2 = list.get(0);
+        for (int i = 1; i < list.size(); i++) {
+            int current = list.get(i);
+            if (current > max1) {
+                max2 = max1;
+                max1 = current;
+            }
+        }
+        return max2;
     }
 
     /**
-     * РЈРґР°Р»РёС‚Рµ С‡РёСЃР»Рѕ РёР· РјР°СЃСЃРёРІР°.
-     * Р’РµСЂРЅРёС‚Рµ РјР°СЃСЃРёРІ РЅРµ СЃРѕРґРµСЂР¶Р°С‰РёР№ СЌС‚РѕРіРѕ СЌР»РµРјРµРЅС‚Р°,
-     * РЅРѕ Рё РЅРµ СЃРѕРґРµСЂР¶Р°С‰РёР№ "РїСЂРѕРїСѓСЃРєРѕРІ" РЅР° РјРµСЃС‚Рµ СѓРґР°Р»РµРЅРЅС‹С… СЌР»РµРјРµРЅС‚РѕРІ
-     * РќР°РїСЂРёРјРµСЂ, РµСЃР»Рё РёР· РјР°СЃСЃРёРІР° [0, 6, 0 ,5, 0] РЅСѓР¶РЅРѕ СѓРґР°Р»РёС‚СЊ СЌР»РµРјРµРЅС‚ 0,
-     * С‚Рѕ РІРѕР·РІСЂР°С‰Р°С‚СЊСЃСЏ РґРѕР»Р¶РµРЅ РјР°СЃСЃРёРІ СЃРѕРґРµСЂР¶Р°С‰РёР№ РґРІР° СЌР»РµРјРµРЅС‚Р° [6, 5]
+     * Удалите число из массива.
+     * Верните массив не содержащий этого элемента,
+     * но и не содержащий "пропусков" на месте удаленных элементов
+     * Например, если из массива [0, 6, 0 ,5, 0] нужно удалить элемент 0,
+     * то возвращаться должен массив содержащий два элемента [6, 5]
      */
     public static int[] removeElementFromArray(int[] numbers, int value) {
-
-        return new int[]{};
+        //O(N)
+        int resultSize = 0;
+        for (int i : numbers) {
+            if (i != value) resultSize++;
+        }
+        int[] result = new int[resultSize];
+        int currentIndex = 0;
+        for (int number : numbers) {
+            if (number != value) result[currentIndex++] = number;
+        }
+        return result;
     }
 
 
     /**
-     * РЈРґР°Р»РёС‚Рµ РІСЃРµ РіР»Р°СЃРЅС‹Рµ РёР· СЃС‚СЂРѕРєРё.
-     * РќР°РїСЂРёРјРµСЂ, "РјРђРјР° РњС‹Р»Р° СЂР°РјСѓ" -> "РјРј РњР» СЂРј"
+     * Удалите все гласные из строки.
+     * Например, "мАма Мыла раму" -> "мм Мл рм"
      */
     public static String removeVowels(String str) {
 
-        return new String();
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < str.length(); i++) {
+            char currentChar = str.charAt(i);
+            boolean res = isVowel(currentChar);
+            if (!res) {
+                stringBuilder.append(currentChar);
+            }
+        }
+        return stringBuilder.toString();
+    }
+
+    public static boolean isVowel(char c) {
+        switch (c) {
+            case 'A':
+            case 'a':
+            case 'E':
+            case 'e':
+            case 'I':
+            case 'i':
+            case 'O':
+            case 'o':
+            case 'U':
+            case 'u':
+            case 'А':
+            case 'а':
+            case 'Е':
+            case 'е':
+            case 'Ё':
+            case 'ё':
+            case 'О':
+            case 'о':
+            case 'И':
+            case 'и':
+            case 'Ю':
+            case 'ю':
+            case 'Э':
+            case 'э':
+            case 'У':
+            case 'у':
+            case 'Ы':
+            case 'ы': return true;
+            default: return false;
+        }
     }
 
 
     /**
-     * РЈР±СЂР°С‚СЊ РїРѕРІС‚РѕСЂСЏСЋС‰РёРµСЃСЏ РїРѕРґСЂСЏРґ СЃРёРјРІРѕР»С‹ РІ СЃС‚СЂРѕРєРµ
-     * РЅР°РїСЂРёРјРµСЂ "РјРјРјРјРѕРѕР»Р»Р»РѕРєРєРѕ" -> "РјРѕР»РѕРєРѕ"
-     * (*) - РІ СЌС‚РѕР№ Р·Р°РґР°С‡Рµ РЅСѓР¶РЅРѕ СѓС‡РёС‚С‹РІР°С‚СЊ СЃРѕС‡РµС‚Р°РЅРёСЏ
-     * РїРѕРІС‚РѕСЂСЏСЋС‰РёС…СЃСЏ Р±СѓРєРІ СЂР°Р·РЅРѕРіРѕ СЂРµРіРёСЃС‚СЂР°,
-     * РїСЂРё СЌС‚РѕРј РІ РІС‹С…РѕРґРЅРѕР№ СЃС‚СЂРѕРєРµ РѕСЃС‚Р°РµС‚СЃСЏ РїРµСЂРІР°СЏ Р±СѓРєРІР°,
-     * РЅР°РїСЂРёРјРµСЂ, "РјРњРјРјРѕРѕР›Р»Р»РѕРєРљРћРѕРѕ" -> "РјРѕР›РѕРєРћ",
+     * Убрать повторяющиеся подряд символы в строке
+     * например "ммммоолллокко" -> "молоко"
+     * (*) - в этой задаче нужно учитывать сочетания
+     * повторяющихся букв разного регистра,
+     * при этом в выходной строке остается первая буква,
+     * например, "мМммооЛллокКОоо" -> "моЛокО",
      */
     public static String removeDublicates(String str) {
-
-        return new String();
+        if(str.length() == 0) return "";
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(str.charAt(0));
+        for (int i = 1; i < str.length(); i++) {
+            if (Character.toLowerCase(str.charAt(i)) ==
+                    Character.toLowerCase(stringBuilder.charAt(stringBuilder.length() -1))
+            ) {
+                continue;
+            }
+            stringBuilder.append(str.charAt(i));
+        }
+        return stringBuilder.toString();
     }
 
     /**
-     * РЎР¶Р°С‚СЊ СЃС‚СЂРѕРєСѓ, СѓРґР°Р»СЏСЏ РїРѕРІС‚РѕСЂСЏСЋС‰РёРµСЃСЏ СЃРёРјРІРѕР»С‹
-     * Рё СѓРєР°Р·С‹РІР°СЏ РєРѕР»РёС‡РµСЃС‚РІРѕ РїРѕРІС‚РѕСЂРѕРІ РґР»СЏ РєР°Р¶РґРѕРіРѕ СЃРёРјРІРѕР»Р°
-     * РЅР°РїСЂРёРјРµСЂ "РјРѕРѕРѕР»РѕРѕРѕРѕРєРєРѕРѕРѕ" -> "Рј1Рѕ3Р»1Рѕ4Рє2Рѕ2"
+     * Сжать строку, удаляя повторяющиеся символы
+     * и указывая количество повторов для каждого символа
+     * например "мооолооооккооо" -> "м1о3л1о4к2о2"
      */
     public static String zipStr(String str) {
-        return new String();
+        if(str.length() == 0) return "";
+        List<Pair> result = new ArrayList<>();
+        char prevSym = str.charAt(0);
+        Pair pair = new Pair(prevSym);
+        for (int i = 1; i < str.length(); i++) {
+            if (str.charAt(i) == prevSym) {
+                pair.count++;
+            } else {
+                result.add(pair);
+                pair = new Pair(str.charAt(i));
+            }
+            prevSym = str.charAt(i);
+        }
+        result.add(pair);
+        return result.stream().map(Pair::toString).collect(Collectors.joining(""));
+    }
+
+    static class Pair {
+        char c;
+        int count;
+
+        public Pair(char c) {
+            this.c = c;
+            this.count = 1;
+        }
+
+        @Override
+        public String toString() {
+            return c + String.valueOf(count);
+        }
     }
 
 
     /**
-     * Р’С‹СЏСЃРЅРёС‚СЊ СЏРІР»СЏРµС‚СЃСЏ Р»Рё СЃС‚СЂРѕРєР° РїР°Р»РёРЅРґСЂРѕРјРѕРј,
-     * С‚Рѕ РµСЃС‚СЊ  РѕРґРёРЅР°РєРѕРІРѕ С‡РёС‚Р°РµС‚СЃСЏ РІ РѕР±РѕРёС… РЅР°РїСЂР°РІР»РµРЅРёСЏС….
-     * РќР°РїСЂРёРјРµСЂ, СЃР»РѕРІРѕ "С‚РѕРїРѕС‚" - РїР°Р»РёРЅРґСЂРѕРј, Р° СЃР»РѕРІРѕ "С‚РѕРїРѕСЂ" РЅРµС‚.
-     * РЎС‚СЂРѕРєР° "Рђ СЂРѕР·Р° СѓРїР°Р»Р° РЅР° Р»Р°РїСѓ РђР·РѕСЂР°" С‚РѕР¶Рµ РїР°Р»РёРЅРґСЂРѕРј,
-     * Р° СЃС‚СЂРѕРєР° "Рђ СЂРѕР·Р° СѓРєРѕР»РѕР»Р° Р»Р°РїСѓ РђР·РѕСЂР°" РЅРµС‚.
-     * "A man, a plan, a canal-Panama", С‚РѕР¶Рµ РїР°Р»РёРЅРґСЂРѕРј
+     * Выяснить является ли строка палиндромом,
+     * то есть  одинаково читается в обоих направлениях.
+     * Например, слово "топот" - палиндром, а слово "топор" нет.
+     * Строка "А роза упала на лапу Азора" тоже палиндром,
+     * а строка "А роза уколола лапу Азора" нет.
+     * "A man, a plan, a canal-Panama", тоже палиндром
      * <p>
-     * (!) РўР°Рє РєР°Рє Р·Р°РїСЂРµС‰РµРЅС‹ СЂРµРіСѓР»СЏСЂРЅС‹Рµ РІС‹СЂР°Р¶РµРЅРёСЏ
-     * Рё РјРµС‚РѕРґС‹ РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёСЏ СЂРµРіРёСЃС‚СЂР° СЃРёРјРІРѕР»РѕРІ РёР· java.lang.String
-     * РѕР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ С‚Р°Р±Р»РёС†Сѓ РєРѕРґРѕРІ СЃРёРјРІРѕР»РѕРІ UTF-8
-     * (Р»СѓС‡С€Рµ СѓР±СЂР°С‚СЊ СЌС‚Сѓ РїРѕРґСЃРєР°Р·РєСѓ Рё РІС‹РґР°С‚СЊ РµРµ РІ РїСЂРѕС†РµСЃСЃРµ)
+     * (!) Так как запрещены регулярные выражения
+     * и методы преобразования регистра символов из java.lang.String
+     * обратите внимание таблицу кодов символов UTF-8
+     * (лучше убрать эту подсказку и выдать ее в процессе)
      */
     public static boolean isPalindrom(String str) {
-
-        return false;
+        int indexLeft = 0;
+        int indexRight = str.length() - 1;
+        while (indexLeft < indexRight) {
+            char leftCharacter = Character.toLowerCase(str.charAt(indexLeft));
+            char rightCharacter = Character.toLowerCase(str.charAt(indexRight));
+            if (!Character.isLetter(leftCharacter)) {
+                indexLeft++;
+                continue;
+            }
+            if (!Character.isLetter(rightCharacter)) {
+                indexRight--;
+                continue;
+            }
+            if (leftCharacter != rightCharacter) return false;
+            indexLeft++;
+            indexRight--;
+        }
+        return true;
     }
 
 
     /**
-     * РџРµСЂРµРІРµСЂРЅСѓС‚СЊ РІСЃРµ СЃР»РѕРІР° РІ РїСЂРµРґР»РѕР¶РµРЅРёРё
-     * "РљРѕС‚ Р»Р°РєР°Р» РјРѕР»РѕРєРѕ" -> "С‚РѕРљ Р»Р°РєР°Р» РѕРєРѕР»РѕРј"
+     * Перевернуть все слова в предложении
+     * "Кот лакал молоко" -> "тоК лакал околом"
      */
     public static String reverseWordsInSentence(String sentence) {
-
-        return new String();
+        StringBuilder stringBuilder = new StringBuilder();
+        List<String> strings = new ArrayList<>();
+        for (int i = 0; i < sentence.length(); i++) {
+            if (sentence.charAt(i) == ' ') {
+                strings.add(stringBuilder.toString());
+                stringBuilder = new StringBuilder();
+            } else if (sentence.charAt(i) == '.' || sentence.charAt(i) == ',' || sentence.charAt(i) == '!') {
+                strings.add(stringBuilder.toString());
+                stringBuilder = new StringBuilder();
+                stringBuilder.append(sentence.charAt(i));
+            } else {
+                stringBuilder.append(sentence.charAt(i));
+            }
+        }
+        strings.add(stringBuilder.toString());
+        StringBuilder result = new StringBuilder();
+        for (String s : strings) {
+            stringBuilder = new StringBuilder();
+            for (int i = s.length() - 1; i >= 0; i--) {
+                stringBuilder.append(s.charAt(i));
+            }
+            if (stringBuilder.length() > 0 && (stringBuilder.charAt(0) == '.'|| stringBuilder.charAt(0) == ',' || stringBuilder.charAt(0) == '!')) {
+                result.deleteCharAt(result.length() - 1);
+            }
+            result.append(stringBuilder.toString()).append(" ");
+        }
+        return result.deleteCharAt(result.length() - 1).toString();
     }
 
     /**
-     * РћС‚СЃРѕСЂС‚РёСЂСѓР№С‚Рµ СЃРёРјРІРѕР»С‹ РІ РјР°СЃСЃРёРІРµ,
-     * РЅРµ РёСЃРїРѕР»СЊР·СѓР№С‚Рµ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ СЃС‚СЂСѓРєС‚СѓСЂС‹ РґР°РЅРЅС‹С….
-     * РџСЂРё РІРІРѕРґРµ РјР°СЃСЃРёРІР° СЃРёРјРІРѕР»РѕРІ {'c', 'a', 'b'},
-     * РІРѕР·РІСЂР°С‰Р°С‚СЊСЃСЏ РґРѕР»Р¶РµРЅ С‚РѕС‚ Р¶Рµ РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹Р№ РјР°СЃСЃРёРІ {'a', 'b', 'c'}
+     * Отсортируйте символы в массиве,
+     * не используйте дополнительные структуры данных.
+     * При вводе массива символов {'c', 'a', 'b'},
+     * возвращаться должен тот же отсортированный массив {'a', 'b', 'c'}
      */
     public static char[] sortSymbols(char[] symbols) {
+        for (int i = 0; i < symbols.length; i++) {
+            int indexMin = i;
+            for (int j = i + 1; j < symbols.length; j++) {
+                if (symbols[indexMin] > symbols[j]) {
+                    indexMin = j;
+                }
+            }
+            char tmp = symbols[indexMin];
+            symbols[indexMin] = symbols[i];
+            symbols[i] = tmp;
 
-        return new char[]{};
+        }
+        return symbols;
     }
 
 
     /**
-     * Р’С‹СЏСЃРЅРёС‚Рµ СЏРІР»СЏСЋС‚СЃСЏ Р»Рё РґРІРµ СЃС‚СЂРѕРєРё Р°РЅРѕРіСЂР°РјРјР°РјРё.
-     * РЎС‚СЂРѕРєРё СЏРІР»СЏСЋС‚СЃСЏ Р°РЅРѕРіСЂР°РјРјР°РјРё, РµСЃР»Рё РѕРЅРё СЃРѕСЃС‚РѕСЏС‚ РёР· РѕРґРЅРёС… Рё С‚РµС… Р¶Рµ Р±СѓРєРІ
-     * РќР°РїСЂРёРјРµСЂ, СЃР»РѕРІР° "РєРѕС‚" Рё "С‚РѕРє" Р°РЅРѕРіСЂР°РјРјС‹, Р° СЃР»РѕРІР° "РєРѕС‚" Рё  "РєРёС‚" РЅРµС‚.
+     * Выясните являются ли две строки анограммами.
+     * Строки являются анограммами, если они состоят из одних и тех же букв
+     * Например, слова "кот" и "ток" анограммы, а слова "кот" и  "кит" нет.
      */
     public static boolean isAnogramOf(String word, String anogram) {
-
-        return false;
+        if (word.length() != anogram.length()) return false;
+        Map<Character, Integer> hashMap = new HashMap<>();
+        for (int i = 0; i < word.length(); i++) {
+            hashMap.merge(word.charAt(i), 1, Integer::sum);
+            hashMap.merge(anogram.charAt(i), -1, Integer::sum);
+        }
+        return hashMap.values().stream().allMatch(v -> v == 0);
     }
 
     /**
-     * Р’С‹СЏСЃРЅРёС‚Рµ, РІСЃРµ Р»Рё СЃРёРјРІРѕР»С‹ РІ СЃС‚СЂРѕРєРµ РІСЃС‚СЂРµС‡Р°СЋС‚СЃСЏ РѕРґРёРЅ СЂР°Р·.
-     * Р•СЃР»Рё СЃС‚СЂРѕРєР° СЃРѕРґРµСЂР¶РёС‚ РїРѕРІС‚РѕСЂСЏР±С‰РёРµСЃСЏ СЃРёРјРІРѕР»С‹,
-     * С‚Рѕ РІРѕР·РІСЂР°С‰Р°С‚СЊ false, РµСЃР»Рё РЅРµ СЃРѕРґРµСЂР¶РёС‚ - true
-     * РќРµР»СЊР·СЏ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ СЃС‚СЂСѓРєС‚СѓСЂС‹ РґР°РЅРЅС‹С….
+     * Выясните, все ли символы в строке встречаются один раз.
+     * Если строка содержит повторябщиеся символы,
+     * то возвращать false, если не содержит - true
+     * Нельзя использовать дополнительные структуры данных.
      * <p>
-     * (!) Р’ СЌС‚РѕР№ Р·Р°РґР°С‡Рµ СЃС‚СЂРѕРєР° РјРѕР¶РµС‚ СЃРѕРґРµСЂР¶Р°С‚СЊ
-     * Р»СЋР±РѕР№ СЃРёРјРІРѕР» РёР· С‚Р°Р±Р»РёС†С‹ ASCII (127 СЃРёРјРІРѕР»РѕРІ)
+     * (!) В этой задаче строка может содержать
+     * любой символ из таблицы ASCII (127 символов)
      * <p>
-     * (!!) РЎР»РѕР¶РЅРѕСЃС‚СЊ - O(n)
+     * (!!) Сложность - O(n)
      */
 
     public static boolean hasUniqueChars(String str) {
-
-        return false;
+        return str.chars().distinct().count() == str.length();
     }
 
 }

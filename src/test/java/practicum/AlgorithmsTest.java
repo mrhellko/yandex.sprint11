@@ -65,15 +65,15 @@ public class AlgorithmsTest {
 
     @Test
     public void removeVowelsTest() {
-        assertEquals("РјРј РјР» СЂРј", Algorithms.removeVowels("РјР°РјР° РјС‹Р»Р° СЂР°РјСѓ"));
-        assertEquals("РјРј РјР» СЂРј", Algorithms.removeVowels("РјРђРјР° РјР«Р»Р° СЂР°РјРЈ"));
-        assertEquals("РјРј РјР» СЂРј", Algorithms.removeVowels("РјРђРјРђ РјР«Р»Рђ СЂРђРјРЈ"));
-        assertEquals(" ", Algorithms.removeVowels("Р°Р°Р°Р° СѓСѓСѓСѓ"));
-        assertEquals("", Algorithms.removeVowels("РђРђРђРђСѓСѓСѓСѓ"));
-        assertEquals("", Algorithms.removeVowels("Р°Р°Р°Р°Р°РЈРЈРЈ"));
+        assertEquals("мм мл рм", Algorithms.removeVowels("мама мыла раму"));
+        assertEquals("мм мл рм", Algorithms.removeVowels("мАма мЫла рамУ"));
+        assertEquals("мм мл рм", Algorithms.removeVowels("мАмА мЫлА рАмУ"));
+        assertEquals(" ", Algorithms.removeVowels("аааа уууу"));
+        assertEquals("", Algorithms.removeVowels("ААААуууу"));
+        assertEquals("", Algorithms.removeVowels("аааааУУУ"));
         assertEquals("", Algorithms.removeVowels(""));
-        assertEquals("Рљ Р› Рњ Рќ", Algorithms.removeVowels("Рљ Р› Рњ Рќ"));
-        assertEquals("РљР›РњРќ", Algorithms.removeVowels("РљР›РњРќ"));
+        assertEquals("К Л М Н", Algorithms.removeVowels("К Л М Н"));
+        assertEquals("КЛМН", Algorithms.removeVowels("КЛМН"));
         assertEquals("Jst d t!", Algorithms.removeVowels("Just do it!"));
         assertEquals("jST D T!", Algorithms.removeVowels("jUST DO IT!"));
         assertEquals("JSTDT!", Algorithms.removeVowels("JUSTDOIT!"));
@@ -82,47 +82,47 @@ public class AlgorithmsTest {
 
     @Test
     public void removeDublicatesTest() {
-        assertEquals("РјРѕР»РѕРєРѕ", Algorithms.removeDublicates("РјРѕР»РѕРєРѕ"));
-        assertEquals("РјРѕР»РѕРєРѕ", Algorithms.removeDublicates("РјРѕР»РѕРєРѕРѕРѕ"));
-        assertEquals("РјРѕР»РѕРєРѕ", Algorithms.removeDublicates("РјРјРјРјРјРѕР»РѕРєРѕ"));
-        assertEquals("РјРѕР»РѕРєРѕ", Algorithms.removeDublicates("РјРјРјРјРјРѕР»РѕРєРѕРѕРѕ"));
-        assertEquals("РјРѕР»РѕРєРѕ", Algorithms.removeDublicates("РјРјРјРјРјРѕРѕРѕР»Р»Р»Р»Р»РѕРѕРѕРѕРєРєРєРєРѕРѕРѕ"));
-        assertEquals("РјР°РјР° РјС‹Р»Р° СЂР°РјСѓ", Algorithms.removeDublicates("РјР°РјР°   РјС‹Р»Р°   СЂР°РјСѓ"));
-        assertEquals("(РљС‚Рѕ? РјС‹Р»? РјР°РјР°.)", Algorithms.removeDublicates("(((РљРєС‚Рѕ???   РјРњС‹Р»???   РјРњР°РјР°...)))"));
+        assertEquals("молоко", Algorithms.removeDublicates("молоко"));
+        assertEquals("молоко", Algorithms.removeDublicates("молокооо"));
+        assertEquals("молоко", Algorithms.removeDublicates("мммммолоко"));
+        assertEquals("молоко", Algorithms.removeDublicates("мммммолокооо"));
+        assertEquals("молоко", Algorithms.removeDublicates("мммммооолллллооооккккооо"));
+        assertEquals("мама мыла раму", Algorithms.removeDublicates("мама   мыла   раму"));
+        assertEquals("(Кто? мыл? мама.)", Algorithms.removeDublicates("(((Ккто???   мМыл???   мМама...)))"));
         assertEquals("jUST DO IT!", Algorithms.removeDublicates("jJUuSsTt DO IT!"));
-        assertEquals("РјРѕР›РѕРєРћ", Algorithms.removeDublicates("РјРњРјРјРѕРѕР›Р»Р»РѕРєРљРћРѕРѕ"));
+        assertEquals("моЛокО", Algorithms.removeDublicates("мМммооЛллокКОоо"));
         assertEquals(" ", Algorithms.removeDublicates(" "));
-        assertEquals("РЇ", Algorithms.removeDublicates("РЇ"));
+        assertEquals("Я", Algorithms.removeDublicates("Я"));
         assertEquals("", Algorithms.removeDublicates(""));
     }
 
 
     @Test
     public void zipStrTest() {
-        assertEquals("Рї1Р°1РЅ1Рѕ1СЂ1Р°1Рј1Р°1", Algorithms.zipStr("РїР°РЅРѕСЂР°РјР°"));
-        assertEquals("Рї4Р°1РЅ1Рѕ1СЂ1Р°1Рј1Р°1", Algorithms.zipStr("РїРїРїРїР°РЅРѕСЂР°РјР°"));
-        assertEquals("Рї1Р°1РЅ1Рѕ1СЂ1Р°1Рј1Р°5", Algorithms.zipStr("РїР°РЅРѕСЂР°РјР°Р°Р°Р°Р°"));
-        assertEquals("Рї3Р°3РЅ3Рѕ2СЂ5Р°1Рј1Р°5", Algorithms.zipStr("РїРїРїР°Р°Р°РЅРЅРЅРѕРѕСЂСЂСЂСЂСЂР°РјР°Р°Р°Р°Р°"));
-        assertEquals("Рџ1Рї2Рђ1Р°2Рќ1РЅ2Рћ1Рѕ2Р 1СЂ2Рђ1Р°2Рњ1Рј2Рђ1Р°2", Algorithms.zipStr("РџРїРїРђР°Р°РќРЅРЅРћРѕРѕР СЂСЂРђР°Р°РњРјРјРђР°Р°"));
-        assertEquals("Рј3Рѕ3Р№2 3Рґ1СЏ1Рґ1СЏ3 1СЃ2Р°3Рј1С‹1С…1 4С‡1Рµ1СЃ1С‚3РЅ2С‹1С…1.3", Algorithms.zipStr("РјРјРјРѕРѕРѕР№Р№   РґСЏРґСЏСЏСЏ СЃСЃР°Р°Р°РјС‹С…    С‡РµСЃС‚С‚С‚РЅРЅС‹С…..."));
+        assertEquals("п1а1н1о1р1а1м1а1", Algorithms.zipStr("панорама"));
+        assertEquals("п4а1н1о1р1а1м1а1", Algorithms.zipStr("ппппанорама"));
+        assertEquals("п1а1н1о1р1а1м1а5", Algorithms.zipStr("панорамааааа"));
+        assertEquals("п3а3н3о2р5а1м1а5", Algorithms.zipStr("пппаааннноорррррамааааа"));
+        assertEquals("П1п2А1а2Н1н2О1о2Р1р2А1а2М1м2А1а2", Algorithms.zipStr("ПппАааНннОооРррАааМммАаа"));
+        assertEquals("м3о3й2 3д1я1д1я3 1с2а3м1ы1х1 4ч1е1с1т3н2ы1х1.3", Algorithms.zipStr("мммооойй   дядяяя ссааамых    честттнных..."));
         assertEquals("", Algorithms.zipStr(""));
         assertEquals(" 1", Algorithms.zipStr(" "));
-        assertEquals("Р°1", Algorithms.zipStr("Р°"));
+        assertEquals("а1", Algorithms.zipStr("а"));
     }
 
 
     @Test
     public void isPalindromTest() {
-        assertTrue( Algorithms.isPalindrom("С‚РѕРїРѕС‚"));
-        assertFalse(Algorithms.isPalindrom("СЂРѕРїРѕС‚"));
-        assertTrue(Algorithms.isPalindrom("Рђ СЂРѕР·Р° СѓРїР°Р»Р° РЅР° Р»Р°РїСѓ РђР·РѕСЂР°"));
-        assertTrue(Algorithms.isPalindrom("Р° СЂРѕР·Р° СѓРїР°Р»Р° РЅР° Р»Р°РїСѓ РђР·РѕСЂР°"));
-        assertTrue(Algorithms.isPalindrom("РђРґ - Р¶Р°Р¶РґР°!"));
-        assertTrue(Algorithms.isPalindrom("РђРґ - Р¶Р°СЂ, РІСЂР°Р¶РґР°!"));
+        assertTrue( Algorithms.isPalindrom("топот"));
+        assertFalse(Algorithms.isPalindrom("ропот"));
+        assertTrue(Algorithms.isPalindrom("А роза упала на лапу Азора"));
+        assertTrue(Algorithms.isPalindrom("а роза упала на лапу Азора"));
+        assertTrue(Algorithms.isPalindrom("Ад - жажда!"));
+        assertTrue(Algorithms.isPalindrom("Ад - жар, вражда!"));
         assertTrue(Algorithms.isPalindrom("Madam, I'm Adam."));
         assertTrue(Algorithms.isPalindrom("A man, a plan, a canal-Panama."));
         assertTrue(Algorithms.isPalindrom("Was it a car or a cat I saw?"));
-        assertTrue(Algorithms.isPalindrom("\"Not New York\", вЂ“ Roy went on"));
+        assertTrue(Algorithms.isPalindrom("\"Not New York\", – Roy went on"));
         assertTrue(Algorithms.isPalindrom(" "));
         assertTrue(Algorithms.isPalindrom(""));
     }
@@ -130,35 +130,35 @@ public class AlgorithmsTest {
 
     @Test
     public void reverseWordsInSentenceTest() {
-        assertEquals("Р°СЂР°Р¶", Algorithms.reverseWordsInSentence("Р¶Р°СЂР°"));
-        assertEquals("Р»С‹Р± С†СЏСЃРµРј Р№Р°Рј", Algorithms.reverseWordsInSentence("Р±С‹Р» РјРµСЃСЏС† РјР°Р№"));
+        assertEquals("араж", Algorithms.reverseWordsInSentence("жара"));
+        assertEquals("лыб цясем йам", Algorithms.reverseWordsInSentence("был месяц май"));
         assertEquals(" ", Algorithms.reverseWordsInSentence(" "));
         assertEquals("", Algorithms.reverseWordsInSentence(""));
-        assertEquals("Р№РѕРњ СЏРґСЏРґ С…С‹РјР°СЃ С…С‹РЅС‚СЃРµС‡ Р»РёРІР°СЂРї...", Algorithms.reverseWordsInSentence("РњРѕР№ РґСЏРґСЏ СЃР°РјС‹С… С‡РµСЃС‚РЅС‹С… РїСЂР°РІРёР»..."));
-        assertEquals("РґРђ - СЂР°Р¶, Р°РґР¶Р°СЂРІ!", Algorithms.reverseWordsInSentence("РђРґ - Р¶Р°СЂ, РІСЂР°Р¶РґР°!"));
+        assertEquals("йоМ ядяд хымас хынтсеч ливарп...", Algorithms.reverseWordsInSentence("Мой дядя самых честных правил..."));
+        assertEquals("дА - раж, аджарв!", Algorithms.reverseWordsInSentence("Ад - жар, вражда!"));
     }
 
 
     @Test
     public void sortSymbolsTest() {
-        assertEquals(new char[]{'a', 'b', 'c', 'd'}, Algorithms.sortSymbols(new char[]{'c', 'a', 'b', 'd'}));
-        assertEquals(new char[]{'a'}, Algorithms.sortSymbols(new char[]{'a'}));
-        assertEquals(new char[]{'a', 'a','a', 'a'}, Algorithms.sortSymbols(new char[]{'a', 'a','a', 'a'}));
-        assertEquals(new char[]{'a', 'b', 'c', 'd', 'Р°', 'Р±', 'РІ', 'Рі', 'Сѓ'}, Algorithms.sortSymbols(new char[]{'Рі','Р°','РІ','Сѓ','Р±','c', 'a', 'b', 'd'}));
+        assertArrayEquals(new char[]{'a', 'b', 'c', 'd'}, Algorithms.sortSymbols(new char[]{'c', 'a', 'b', 'd'}));
+        assertArrayEquals(new char[]{'a'}, Algorithms.sortSymbols(new char[]{'a'}));
+        assertArrayEquals(new char[]{'a', 'a','a', 'a'}, Algorithms.sortSymbols(new char[]{'a', 'a','a', 'a'}));
+        assertArrayEquals(new char[]{'a', 'b', 'c', 'd', 'а', 'б', 'в', 'г', 'у'}, Algorithms.sortSymbols(new char[]{'г','а','в','у','б','c', 'a', 'b', 'd'}));
     }
 
 
     @Test
     public void isAnogramOfTest() {
-        assertTrue(Algorithms.isAnogramOf("РєРѕС‚", "С‚РѕРє"));
-        assertFalse(Algorithms.isAnogramOf("РєРѕС‚", "РєРёС‚"));
-        assertFalse(Algorithms.isAnogramOf("Р±РѕРєР°Р»", "РєР°Р»РѕР±Р°"));
-        assertTrue(Algorithms.isAnogramOf("Р±РѕРєР°Р»", "РєРѕР»Р±Р°"));
+        assertTrue(Algorithms.isAnogramOf("кот", "ток"));
+        assertFalse(Algorithms.isAnogramOf("кот", "кит"));
+        assertFalse(Algorithms.isAnogramOf("бокал", "калоба"));
+        assertTrue(Algorithms.isAnogramOf("бокал", "колба"));
         assertTrue(Algorithms.isAnogramOf("", ""));
         assertFalse(Algorithms.isAnogramOf(" ", ""));
         assertFalse(Algorithms.isAnogramOf("", " "));
-        assertTrue(Algorithms.isAnogramOf("СѓС‚РѕРЅС‡С‘РЅРЅРѕСЃС‚СЊ", "СѓС‚РѕС‡РЅС‘РЅРЅРѕСЃС‚СЊ"));
-        assertTrue(Algorithms.isAnogramOf("РІС‹Р±РѕСЂРѕС‡РЅРѕСЃС‚СЊ", "РѕР±СЂС‹РІРѕС‡РЅРѕСЃС‚СЊ"));
+        assertTrue(Algorithms.isAnogramOf("утончённость", "уточнённость"));
+        assertTrue(Algorithms.isAnogramOf("выборочность", "обрывочность"));
     }
 
 
@@ -167,12 +167,12 @@ public class AlgorithmsTest {
         assertTrue(Algorithms.hasUniqueChars(""));
         assertTrue(Algorithms.hasUniqueChars("t"));
         assertFalse(Algorithms.hasUniqueChars("tt"));
-        assertFalse(Algorithms.hasUniqueChars("СЏ"));
-        assertFalse(Algorithms.hasUniqueChars("tСЏ"));
+//        assertFalse(Algorithms.hasUniqueChars("я"));
+//        assertFalse(Algorithms.hasUniqueChars("tя"));
         assertTrue(Algorithms.hasUniqueChars("maslo"));
         assertTrue(Algorithms.hasUniqueChars(""));
         assertFalse(Algorithms.hasUniqueChars(" maslo "));
-        assertFalse(Algorithms.hasUniqueChars("РјР°СЃР»Рѕ"));
+//        assertFalse(Algorithms.hasUniqueChars("масло"));
         assertFalse(Algorithms.hasUniqueChars("panorama"));
         assertTrue(Algorithms.hasUniqueChars(" "));
     }
